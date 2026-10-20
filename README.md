@@ -1,4 +1,8 @@
-# OpenLogi Headset
+# OpenLogi Headset → Open Headset Control Panel
+
+> **Este proyecto ahora se llama [Open Headset Control Panel](https://github.com/blzkz/open-headset-control-panel)** y este repositorio está archivado.
+> La versión 1.2.1 de OpenLogi se actualiza sola a la nueva app (que sustituye al paquete `openlogi-headset` y conserva tus perfiles).
+> Web nueva: <https://blzkz.github.io/open-headset-control-panel/>
 
 Panel de control para **auriculares gaming en Linux**, con un aspecto muy cercano a **Logitech G HUB**: auriculares **Logitech HID++** (PRO X Wireless, G733, G935, G535…) y **más de 40 modelos de SteelSeries, HyperX, Corsair, Audeze, Logitech/ASTRO, Sony, Jabra, ROCCAT, Lenovo, Plantronics y MCHOSE** gracias a una adaptación de los controladores de [HeadsetControl](https://github.com/Sapd/HeadsetControl).
 Habla directamente con el auricular a través de `/dev/hidraw` (sin hidapi, sin código compilado) y se integra con PipeWire para las funciones de audio que en Windows hace G HUB por software.

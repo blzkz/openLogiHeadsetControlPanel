@@ -26,7 +26,9 @@ from pathlib import Path
 from . import __version__
 from .battery import CACHE_DIR
 
-REPO = "blzkz/openLogiHeadsetControlPanel"
+# The project is now "Open Headset Control Panel": updates come from its new repository and
+# its packages replace openlogi-headset.
+REPO = "blzkz/open-headset-control-panel"
 API_HOST = "api.github.com"
 PACKAGE = "openlogi-headset"
 PACKAGE_ROOT = Path("/usr/share/openlogi-headset")
@@ -212,7 +214,8 @@ def download_verified(release: Release, kind: InstallKind, token: str | None = N
 def install_command(kind: InstallKind, package: Path) -> list[str]:
     path = str(package.resolve())
     if kind is InstallKind.PACMAN:
-        return ["pkexec", "pacman", "-U", "--noconfirm", path]
+        # --ask=4: answer "yes" to removing the conflicting package (this one, openlogi-headset)
+        return ["pkexec", "pacman", "-U", "--noconfirm", "--ask=4", path]
     if kind is InstallKind.DEB:
         if shutil.which("apt-get"):
             return ["pkexec", "apt-get", "install", "-y", "--allow-downgrades", path]
@@ -251,5 +254,5 @@ def install(kind: InstallKind, package: Path) -> None:
 def relaunch_command(kind: InstallKind) -> list[str]:
     if kind is InstallKind.APPIMAGE:
         return [os.environ["APPIMAGE"]]
-    launcher = shutil.which("openlogi-headset")
+    launcher = shutil.which("open-headset") or shutil.which("openlogi-headset")
     return [launcher] if launcher else []
